@@ -96,3 +96,34 @@ serverShow = false;
 <p *ngIf="serverShow">{{ serverStatus}}</p>
 
 ```
+#### enhance  ngif with else condition
+```
+<p *ngIf="serverShow;else noShow">{{ serverStatus}}</p>
+
+<ng-template #noShow>
+  <p>No Server</p>
+</ng-template>
+```
+#### ngStyle
+```
+<p [ngStyle]="{ backgroundColor: 'red' }" >Hello</p>
+```
+
+#### ngClass
+[ngClass] = "{ 'className' : function(true or false) }"
+```
+<p [ngClass]="{ 'online': true }">World</p>
+```
+#### ngFor
+for 循环 servers 数组，for循环几次就创建几个paragraph
+```
+<p *ngFor="let server of servers" >New</p>
+```
+let作用:
+```
+<p *ngFor="let server of servers;let i = index">{{ i }}</p>
+
+<p *ngFor="let server of servers;let i = index">{{ server }}</p>
+```
+
+
