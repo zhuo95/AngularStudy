@@ -83,3 +83,16 @@ two way binding 是一边改变另一边也会变
 //two way binding
 <input type="text" [(ngModel)]="serverId">
 ```
+## Directives
+### Directives are instructions in the DOM
+#### ngif
+```
+serverShow = false;
+ onChangeServer() {
+    this.serverShow = true;
+    this.serverStatus = 'server is ' + this.serverId;
+  }
+  ...
+<p *ngIf="serverShow">{{ serverStatus}}</p>
+
+```
