@@ -126,4 +126,6 @@ let作用:
 <p *ngFor="let server of servers;let i = index">{{ server }}</p>
 ```
 
+#### view encapsulation
+css 文件只是对当前component的style 有效
 
