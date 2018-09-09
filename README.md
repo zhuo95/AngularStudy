@@ -129,3 +129,45 @@ let作用:
 #### view encapsulation
 css 文件只是对当前component的style 有效
 
+### component life cycle 
+
+##### ngOnChanges: called after a bound input property changes
+##### ngOnInit: called once component is initialized
+##### ngDoCheck: called during every change detection run
+##### ngAfterContentInit: called after content [ngContent] has been projected into view
+##### ngAfterViewInit: called after the component's view has been initialized
+
+#### Create a basic attribute directive
+
+```
+@Directive ({
+    selector: '[appBasicDirective]'
+})
+
+export class BasicDirective implements OnInit {
+    constructor(private elementRef: ElementRef){
+    }
+    
+    ngOnInit(){
+        this.elementRef.nativeElement.style.backgroundColor = 'blue';
+    }
+}
+```
+
+better way to create attribute directive ： 
+
+```
+export class betterDicrective implements ngInit{
+    @HostBinding('style.background-color') backgroudnColor :string = ...;
+    
+    constructor(private elementRef : ElementRef, privete render:RenderV2){}
+    
+    ngOnInit(){
+        this.render.setstStyle(this.elementRef.nativeElement,'background-color','blue);
+    }
+    //监听事件
+    @HostListener('mouseenter') moseover(event : Event){
+        this.render.setStyle(....); //也可以是 this.backgroundColor = ...;
+    }
+```
+
