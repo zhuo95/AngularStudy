@@ -169,5 +169,32 @@ export class betterDicrective implements ngInit{
     @HostListener('mouseenter') moseover(event : Event){
         this.render.setStyle(....); //也可以是 this.backgroundColor = ...;
     }
+}
 ```
+#### build structural directive
 
+```
+@input() set appUnless(condition: boolean){
+    if(!condition){
+        this.vcRef.createEmbeddedView(this.templateRef);
+    }else{
+        this.vcRef.clear();
+    }
+}
+
+constructor(private templateRef : TemplateRef<any>, private vcRef: ViewContainerRef){}
+
+} 
+
+
+
+<div *appUnless="onlyOdd">
+    <li
+        [ngClass] = "{odd : even % 2 ==0}"
+        [ngStyle] = "{backgroudnColor:even%2==0? 'yellow' : 'blue'}"
+        *ngFor = "let even of evenNumbers">
+        {{even}} 
+    </li>
+</div>
+    
+```
